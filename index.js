@@ -26,9 +26,10 @@ async function run() {
         // await client.connect();
 
         const userCollection = client.db("photoCraft").collection("users");
-        // const galleryCollectionTwo = client.db("toyVerse").collection("gallaryTwo");
 
-        // const toyCollection = client.db("toyVerse").collection("allToys")
+        const classesCollection = client.db("photoCraft").collection("classes");
+
+        // const toyCollection = client.db("toyVerse").collection("")
 
         // users related api 
 
@@ -38,8 +39,15 @@ async function run() {
             res.send(result);
         })
 
-        app.post('/users', async(req, res)=>{
+        app.post('/users', async (req, res) => {
             const user = req.body;
+            console.log(user);
+            const query = { email: user.email }
+            const existingUser = await userCollection.findOne(query)
+            console.log('existing user', existingUser);
+            if (existingUser) {
+                return res.send({ message: 'user already exists' })
+            }
             const result = await userCollection.insertOne(user);
             res.send(result);
         })
@@ -53,11 +61,13 @@ async function run() {
             res.send(result);
         })
 
-        // app.get('/gallery-two', async (req, res) => {
-        //     const cursor = galleryCollectionTwo.find();
-        //     const result = await cursor.toArray();
-        //     res.send(result);
-        // })
+        // classes related api
+
+        app.get('/classes', async (req, res) => {
+            const cursor = classesCollection.find();
+            const result = await cursor.toArray();
+            res.send(result);
+        })
 
         // app.get('/toy', async (req, res) => {
         //     const cursor = toyCollection.find();

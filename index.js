@@ -92,6 +92,20 @@ async function run() {
             res.send(result)
         })
 
+        app.patch("/classes", async (req, res) => {
+            const db_user = req.body;
+            const id = db_user.id;
+            const status = db_user.status;
+            const filter = { _id: new ObjectId(id) };
+            const updatedStatus = {
+                $set: {
+                    status: status
+                }
+            }
+            const result = await classesCollection.updateOne(filter, updatedStatus);
+            res.send(result);
+        })
+
         //update related api
         
         app.patch("/all-users/update-role", async (req, res) => {

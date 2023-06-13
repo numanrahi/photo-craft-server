@@ -29,7 +29,6 @@ async function run() {
 
         const classesCollection = client.db("photoCraft").collection("classes");
 
-        // const toyCollection = client.db("toyVerse").collection("")
 
         // users related api 
 

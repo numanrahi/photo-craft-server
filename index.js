@@ -83,18 +83,22 @@ async function run() {
             res.send(result);
         })
 
+        app.post('/classes', async (req, res) => {
+            const newClasses = req.body;
+            if(newClasses == {}){
+                return;
+            }
+            const result = await classesCollection.insertOne(newClasses);
+            res.send(result)
+        })
+
         // app.get('/toy', async (req, res) => {
         //     const cursor = toyCollection.find();
         //     const result = await cursor.toArray();
         //     res.send(result);
         // })
 
-        // app.post('/toy', async (req, res) => {
-        //     const newToy = req.body;
-        //     console.log(newToy);
-        //     const result = await toyCollection.insertOne(newToy);
-        //     res.send(result)
-        // })
+        
 
         // app.get("/toy/:id", async (req, res) => {
         //     const id = req.params.id;

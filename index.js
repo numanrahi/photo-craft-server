@@ -68,12 +68,12 @@ async function run() {
             res.send(result);
         })
 
-        // app.get('/users', async (req, res) => {
-        //     const filter = { role: "user" }
-        //     const cursor = userCollection.find(filter);
-        //     const result = await cursor.toArray();
-        //     res.send(result);
-        // })
+        app.get('/users', async (req, res) => {
+            const filter = { role: "user" }
+            const cursor = userCollection.find(filter);
+            const result = await cursor.toArray();
+            res.send(result);
+        })
 
         // classes related api
 

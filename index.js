@@ -33,7 +33,7 @@ async function run() {
 
         // users related api 
 
-        app.get('/users', async (req, res) => {
+        app.get('/all-users', async (req, res) => {
             const cursor = userCollection.find();
             const result = await cursor.toArray();
             res.send(result);
@@ -60,6 +60,20 @@ async function run() {
             const result = await cursor.toArray();
             res.send(result);
         })
+
+        app.get('/admins', async (req, res) => {
+            const filter = { role: "admin" }
+            const cursor = userCollection.find(filter);
+            const result = await cursor.toArray();
+            res.send(result);
+        })
+
+        // app.get('/users', async (req, res) => {
+        //     const filter = { role: "user" }
+        //     const cursor = userCollection.find(filter);
+        //     const result = await cursor.toArray();
+        //     res.send(result);
+        // })
 
         // classes related api
 

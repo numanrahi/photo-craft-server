@@ -122,49 +122,6 @@ async function run() {
             res.send(result);
         })
 
-        // app.get('/toy', async (req, res) => {
-        //     const cursor = toyCollection.find();
-        //     const result = await cursor.toArray();
-        //     res.send(result);
-        // })
-
-        
-
-        // app.get("/toy/:id", async (req, res) => {
-        //     const id = req.params.id;
-        //     const query = { _id: new ObjectId(id) }
-        //     const result = await toyCollection.findOne(query);
-        //     res.send(result);
-        // })
-
-        // app.delete("/toy/:id", async (req, res) => {
-        //     const id = req.params.id;
-        //     const query = { _id: new ObjectId(id) };
-        //     const result = await toyCollection.deleteOne(query);
-        //     res.send(result);
-        // })
-
-        // app.patch("/toy/:id", async (req, res) => {
-        //     const id = req.params.id;
-        //     const query = { _id: new ObjectId(id) }
-        //     const options = { upsert: true };
-        //     const updatedToy = req.body;
-        //     const latestToy = {
-        //         $set: {
-        //             toy_name: updatedToy.toy_name,
-        //             photo: updatedToy.photo,
-        //             category: updatedToy.category,
-        //             seller_name: updatedToy.seller_name,
-        //             seller_email: updatedToy.email,
-        //             price: updatedToy.price,
-        //             rating: updatedToy.rating,
-        //             quantity: updatedToy.quantity,
-        //             description: updatedToy.details,
-        //         }
-        //     }
-        //     const result = await toyCollection.updateOne(query, latestToy, options);
-        //     res.send(result);
-        // })
 
         // Send a ping to confirm a successful connection
         await client.db("admin").command({ ping: 1 });

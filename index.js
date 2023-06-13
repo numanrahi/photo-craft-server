@@ -92,6 +92,22 @@ async function run() {
             res.send(result)
         })
 
+        //update related api
+        
+        app.patch("/all-users/update-role", async (req, res) => {
+            const db_user = req.body;
+            const id = db_user.id;
+            const role = db_user.role;
+            const filter = { _id: new ObjectId(id) };
+            const updatedStatus = {
+                $set: {
+                    role: role
+                }
+            }
+            const result = await userCollection.updateOne(filter, updatedStatus);
+            res.send(result);
+        })
+
         // app.get('/toy', async (req, res) => {
         //     const cursor = toyCollection.find();
         //     const result = await cursor.toArray();

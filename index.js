@@ -38,7 +38,7 @@ async function run() {
             res.send(result);
         })
 
-        app.post('/users', async (req, res) => {
+        app.post('/all-users', async (req, res) => {
             const user = req.body;
             console.log(user);
             const query = { email: user.email }
